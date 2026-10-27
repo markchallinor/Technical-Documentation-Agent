@@ -1,0 +1,24 @@
+{
+  "_comment": "Optional per-repository overrides. Copy to <target repo>/.docs-agent/config.json and edit. Every key is optional; built-in defaults are shown here.",
+  "docs_dir": "docs",
+  "expected_repositories": null,
+  "style_guide": null,
+  "evidence_exclude": [
+    "docs/**",
+    "wiki/**",
+    "**/*.md",
+    "**/*.rst",
+    "**/*.adoc",
+    "**/README*",
+    "**/CHANGELOG*",
+    "**/HISTORY*"
+  ],
+  "skip_dirs": [
+    ".git", "node_modules", "vendor", "bower_components", "dist", "build",
+    "target", "out", ".venv", "venv", "env", "__pycache__", ".tox",
+    ".mypy_cache", ".pytest_cache", ".next", ".nuxt", "coverage",
+    ".docs-agent", ".idea", ".vscode"
+  ],
+  "pii_allowed_email_domains": ["example.com", "example.org", "example.net"],
+  "secret_scanner": "auto"
+}

@@ -1,0 +1,32 @@
+# Tests for the agent's own scripts. This workflow only tests this public
+# repository. It does not run the agent and has no access to any
+# target repository.
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Unit tests
+        env:
+          # Organisation-identifying terms, kept in a repository secret so they
+          # are never committed. See tests/test_no_identifying_terms.py.
+          BLOCKED_TERMS: ${{ secrets.BLOCKED_TERMS }}
+        run: python3 -m unittest discover -s tests -v
+      - name: Installer smoke test
+        run: |
+          export HOME="$RUNNER_TEMP/home"
+          mkdir -p "$HOME" "$RUNNER_TEMP/target"
+          git -C "$RUNNER_TEMP/target" init -q
+          bash scripts/install.sh --target "$RUNNER_TEMP/target"
+          test -f "$HOME/.claude/skills/docs-bootstrap/SKILL.md"
+          ! grep -r "__AGENT_HOME__" "$HOME/.claude/skills"
+          python3 -m json.tool "$RUNNER_TEMP/target/.claude/settings.local.json" > /dev/null

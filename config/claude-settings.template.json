@@ -1,0 +1,51 @@
+{
+  "permissions": {
+    "defaultMode": "default",
+    "allow": [
+      "Read(./**)",
+      "Read(/__AGENT_HOME__/**)",
+      "Glob",
+      "Grep",
+      "Edit(./docs/**)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git show:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git blame:*)",
+      "Bash(git status:*)",
+      "Bash(python3 __AGENT_HOME__/extractors/extract_facts.py:*)",
+      "Bash(python3 __AGENT_HOME__/scripts/markers.py:*)",
+      "Bash(python3 __AGENT_HOME__/scripts/check_citations.py:*)",
+      "Bash(python3 __AGENT_HOME__/scripts/check_output.py:*)",
+      "Bash(python3 __AGENT_HOME__/scripts/map_changes.py:*)"
+    ],
+    "deny": [
+      "WebFetch",
+      "WebSearch",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(git reset:*)",
+      "Bash(git checkout:*)",
+      "Bash(git remote:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(ssh:*)",
+      "Bash(scp:*)",
+      "Bash(pip install:*)",
+      "Bash(pip3 install:*)",
+      "Bash(npm install:*)",
+      "Bash(rm:*)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./**/.env)",
+      "Read(./**/.env.*)",
+      "Read(./**/*.pem)",
+      "Read(./**/*.key)",
+      "Read(./**/*.p12)",
+      "Read(./**/*.pfx)",
+      "Read(./**/id_rsa*)",
+      "Read(./**/credentials*)"
+    ]
+  }
+}

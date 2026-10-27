@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.docs-agent/
+.claude/settings.local.json
+.blocked-terms
